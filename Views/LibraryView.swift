@@ -5,6 +5,7 @@
 //  Created by Mattia Boccia on 06/11/25.
 //
 
+
 import SwiftUI
 
 struct LibraryView: View {
@@ -12,36 +13,56 @@ struct LibraryView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section(header: Text("Recent")) {
-                    ForEach(songs) { song in
-                        SongRowView(song: song)
+            VStack(spacing: 0) {
+                
+            
+                HStack(alignment: .center) {
+                    Text("Songs")
+                        .font(.largeTitle).bold()
+                    
+                    Spacer()
+                    
+                    Image("profile")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
+                }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                
+               
+                List {
+                    Section(header: Text("")) {
+                        ForEach(songs) { song in
+                            SongRowView(song: song)
+                        }
                     }
                 }
+                .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
+
             }
-            .navigationTitle("Library")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {}) {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
+            
         }
     }
 }
+
 
 struct SongRowView: View {
     let song: Song
     
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 25) {
             RoundedRectangle(cornerRadius: 4)
                 .fill(Color.gray.opacity(0.3))
-                .frame(width: 50, height: 50)
+                .frame(width: 20, height: 10)
                 .overlay(
-                    Image(systemName: "music.note")
-                        .foregroundColor(.gray)
+                    Image(song.albumArt)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 50, height: 50)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 )
             
             VStack(alignment: .leading, spacing: 4) {
@@ -63,6 +84,7 @@ struct SongRowView: View {
         }
         .padding(.vertical, 4)
     }
+    
 }
 
 #Preview {

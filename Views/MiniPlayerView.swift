@@ -16,7 +16,7 @@ struct MiniPlayerView: View {
             // Album Art
             RoundedRectangle(cornerRadius: 6)
                 .fill(Color.gray.opacity(0.3))
-                .frame(width: 50, height: 50)
+                .frame(width: 35, height: 35)
                 .overlay(
                     Image(systemName: "music.note")
                         .foregroundColor(.gray)
@@ -57,7 +57,7 @@ struct MiniPlayerView: View {
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 120)
                 .fill(Color(.systemGray6))
         )
         .padding(.horizontal, 8)
@@ -65,5 +65,5 @@ struct MiniPlayerView: View {
 }
 
 #Preview {
-    MiniPlayerView(song: Song(title: "Blinding Lights", artist: "The Weeknd", albumName: "After Hours", albumArt: "album1", duration: 200))
+    MiniPlayerView(song: Song(title: "Blinding Lights", artist: "The Weeknd", albumName: "After Hours", albumArt: "BlindingLights", duration: 200))
 }
